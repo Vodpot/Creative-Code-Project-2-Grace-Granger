@@ -37,6 +37,11 @@ end
   patternAlpha9 = 90
   patternAlpha10 = 100
 
+-- Defined Alpha and Color variables
+  alphaChoice = {patternAlpha1,patternAlpha2,patternAlpha3,patternAlpha4,patternAlpha5,patternAlpha6,patternAlpha7,patternAlpha8,patternAlpha9,patternAlpha10}
+  colorChoice = {'Blue','Pink','Yellow'}
+
+  -- Shape array for the generative grid
   ShapeOptions = {'drawSquiggle','drawRhombus','drawSquare','drawCircle','drawHeart','drawClover','drawTriangle'}
 
 
@@ -111,37 +116,47 @@ function drawTriangle(xLoc,yLoc,scaleShape)
 end
 
 function mousePressed()
+  -- Resets background so iterations don't layer up
+  background(255)
+
+  -- Fisher-Yates method to randomize my array while making sure each shape is used every time
+   for i = #ShapeOptions, 2, -1 do
+    j = math.random(i)
+    ShapeOptions[i], ShapeOptions[j] = ShapeOptions[j], ShapeOptions[i] -- Swap elements
+  end
+ 
+  -- Chooses the # of shapes and their size that will appear in a single generated grid
   for index, shape in ipairs(ShapeOptions) do
-    xGridSize = math.floor(random(8, 16))
-    yGridSize = math.floor(random(8,16))
-   
-    randomXGrid = math.floor(random(8,16))
-    randomYGrid = math.floor(random(8,16))
+    randomXGrid = math.floor(random(10,24))
+    randomYGrid = math.floor(random(10,24))
     randomShape = ShapeOptions[i]
-    scaleShape = math.floor(random(1,6))
+    scaleShape = math.floor(random(1,3))
       xLoc = 0
       yLoc = 0
+      
+      -- Nested for loop that chooses a shape and places it
   for x = 0, randomXGrid do
     for y = 0, randomYGrid do
-      if randomShape == 'drawSquiggle' then
+      if shape == 'drawSquiggle' then
         drawSquiggle(xLoc,yLoc,scaleShape)
-      elseif 'drawCircle' then
+      elseif shape == 'drawCircle' then
         drawCircle(xLoc,yLoc,scaleShape)
-      elseif 'drawHeart' then
+      elseif shape == 'drawHeart' then
         drawHeart(xLoc,yLoc,scaleShape)
-      elseif 'drawClover' then
+      elseif shape == 'drawClover' then
         drawClover(xLoc,yLoc,scaleShape)
-      elseif 'drawTriangle' then
+      elseif shape == 'drawTriangle' then
         drawTriangle(xLoc,yLoc, scaleShape)
-        elseif 'drawRhombus' then
+      elseif shape == 'drawRhombus' then
         drawRhombus(xLoc,yLoc,scaleShape)
-        elseif 'drawSquare' then
+      elseif shape == 'drawSquare' then
         drawSquare(xLoc,yLoc,scaleShape)
       end
+      -- Spreads out the grid to take up the entire sketch
       yLoc = yLoc + 550/randomYGrid
     end
     yLoc = 0
     xLoc = xLoc + 800/randomXGrid
+    end
   end
-end
 end
