@@ -10,6 +10,8 @@ end
 
 -- Define all my potential colors and opacities
   
+
+
   -- Define Risograph Blue
   risoBlueR = 0
   risoBlueG = 120
@@ -117,8 +119,11 @@ end
 
 function mousePressed()
   -- Resets background so iterations don't layer up
+  
+  
   background(255)
 
+ 
   -- Fisher-Yates method to randomize my array while making sure each shape is used every time
    for i = #ShapeOptions, 2, -1 do
     j = math.random(i)
@@ -134,22 +139,41 @@ function mousePressed()
       xLoc = 0
       yLoc = 0
       
+      -- Chooses the grid of shape's color
+      shapeColor = random(colorChoice)
+      shapeOpacity = random(alphaChoice)
+        if shapeColor == 'Blue' then
+         fill(risoBlueR, risoBlueG, risoBlueB,shapeOpacity)
+        elseif shapeColor == 'Pink' then
+         fill(risoPinkR, risoPinkG, risoPinkB,shapeOpacity)
+        elseif shapeColor == 'Yellow' then
+         fill(risoYellowR, risoYellowG, risoYellowB,shapeOpacity)
+        end
+
       -- Nested for loop that chooses a shape and places it
   for x = 0, randomXGrid do
     for y = 0, randomYGrid do
+
+      
       if shape == 'drawSquiggle' then
         drawSquiggle(xLoc,yLoc,scaleShape)
       elseif shape == 'drawCircle' then
+        noStroke()
         drawCircle(xLoc,yLoc,scaleShape)
       elseif shape == 'drawHeart' then
+        noStroke()
         drawHeart(xLoc,yLoc,scaleShape)
       elseif shape == 'drawClover' then
+        noStroke()
         drawClover(xLoc,yLoc,scaleShape)
       elseif shape == 'drawTriangle' then
+        noStroke()
         drawTriangle(xLoc,yLoc, scaleShape)
       elseif shape == 'drawRhombus' then
+        noStroke()
         drawRhombus(xLoc,yLoc,scaleShape)
       elseif shape == 'drawSquare' then
+        noStroke()
         drawSquare(xLoc,yLoc,scaleShape)
       end
       -- Spreads out the grid to take up the entire sketch
