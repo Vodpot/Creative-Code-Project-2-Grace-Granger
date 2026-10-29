@@ -28,20 +28,17 @@ end
   risoYellowB = 0
 
   -- Define potential Alpha values
-  patternAlpha1 = 10
-  patternAlpha2 = 20
-  patternAlpha3 = 30
-  patternAlpha4 = 40
-  patternAlpha5 = 50
-  patternAlpha6 = 60
-  patternAlpha7 = 70
-  patternAlpha8 = 80
-  patternAlpha9 = 90
-  patternAlpha10 = 100
+  patternAlpha40 = 40
+  patternAlpha50 = 50
+  patternAlpha60 = 60
+  patternAlpha70 = 70
+  patternAlpha80 = 80
+  patternAlpha90 = 90
+  patternAlpha100 = 100
 
 -- Defined Alpha and Color variables
-  alphaChoice = {patternAlpha1,patternAlpha2,patternAlpha3,patternAlpha4,patternAlpha5,patternAlpha6,patternAlpha7,patternAlpha8,patternAlpha9,patternAlpha10}
-  colorChoice = {'Blue','Pink','Yellow'}
+  alphaChoice = {patternAlpha40,patternAlpha50,patternAlpha60,patternAlpha70,patternAlpha80,patternAlpha90,patternAlpha100}
+  colorChoice = {'Pink','Yellow'}
 
   -- Shape array for the generative grid
   ShapeOptions = {'drawSquiggle','drawRhombus','drawSquare','drawCircle','drawHeart','drawClover','drawTriangle'}
@@ -64,7 +61,6 @@ function drawRhombus(xLoc,yLoc,scaleShape)
   push()
   translate(xLoc,yLoc)
   scale(scaleShape)
-  noFill()
   quad(0,10,10,20,20,10,10,0)
   pop()
 end
@@ -74,7 +70,7 @@ function drawSquare(xLoc,yLoc,scaleShape)
   push()
   translate(xLoc,yLoc)
   scale(scaleShape)
-  square(0,0,5)
+  square(0,0,10)
   pop()
 end
 -- Defines movable and scalable Circle shape
@@ -82,7 +78,7 @@ function drawCircle(xLoc,yLoc,scaleShape)
   push()
   translate(xLoc,yLoc)
   scale(scaleShape)
-  circle(0,0,5)
+  circle(5,5,20)
   pop()
 end
 
@@ -113,7 +109,7 @@ function drawTriangle(xLoc,yLoc,scaleShape)
   push()
   translate(xLoc,yLoc)
   scale(scaleShape)
-  triangle(0,8,5,0,10,8)
+  triangle(0,16,10,0,20,16)
   pop()
 end
 
@@ -121,7 +117,7 @@ function mousePressed()
   -- Resets background so iterations don't layer up
   
   
-  background(255)
+  background(0,120,191)
 
  
   -- Fisher-Yates method to randomize my array while making sure each shape is used every time
@@ -135,16 +131,14 @@ function mousePressed()
     randomXGrid = math.floor(random(10,24))
     randomYGrid = math.floor(random(10,24))
     randomShape = ShapeOptions[i]
-    scaleShape = math.floor(random(1,3))
+    scaleShape = math.floor(random(2,4))
       xLoc = 0
       yLoc = 0
       
       -- Chooses the grid of shape's color
       shapeColor = random(colorChoice)
       shapeOpacity = random(alphaChoice)
-        if shapeColor == 'Blue' then
-         fill(risoBlueR, risoBlueG, risoBlueB,shapeOpacity)
-        elseif shapeColor == 'Pink' then
+        if shapeColor == 'Pink' then
          fill(risoPinkR, risoPinkG, risoPinkB,shapeOpacity)
         elseif shapeColor == 'Yellow' then
          fill(risoYellowR, risoYellowG, risoYellowB,shapeOpacity)
@@ -183,4 +177,7 @@ function mousePressed()
     xLoc = xLoc + 800/randomXGrid
     end
   end
+  img = loadImage('Assets/StarThird.png')
+  -- Draw Image
+  image(img,0, 0, 800, 550)
 end
