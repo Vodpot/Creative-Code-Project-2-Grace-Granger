@@ -5,7 +5,7 @@ require("L5")
   
 function setup()
   size(800, 550)
-  windowTitle("Grace Granger Project 2")
+  windowTitle("Stereogram Generator")
 end
 
 -- Define all my potential colors and opacities
@@ -32,12 +32,9 @@ end
   patternAlpha50 = 50
   patternAlpha60 = 60
   patternAlpha70 = 70
-  patternAlpha80 = 80
-  patternAlpha90 = 90
-  patternAlpha100 = 100
 
 -- Defined Alpha and Color variables
-  alphaChoice = {patternAlpha40,patternAlpha50,patternAlpha60,patternAlpha70,patternAlpha80,patternAlpha90,patternAlpha100}
+  alphaChoice = {patternAlpha40,patternAlpha50,patternAlpha60,patternAlpha70}
   colorChoice = {'Pink','Yellow'}
 
   -- Shape array for the generative grid
@@ -177,7 +174,7 @@ function mousePressed()
     xLoc = xLoc + 800/randomXGrid
     end
   end
-  img = loadImage('Assets/StarThird.png')
+  img = loadImage(random{'Assets/Star.png','Assets/Smile.png','Assets/Heart.png'})
   -- Draw Image
   image(img,0, 0, 800, 550)
 end
