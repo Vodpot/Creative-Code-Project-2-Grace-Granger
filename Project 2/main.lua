@@ -151,10 +151,10 @@ function mousePressed()
     xLoc = xLoc + 800/randomXGrid
     end
   end
-  img = loadImage(random{'Assets/Star.png','Assets/Smile.png','Assets/Heart.png','Assets/Clover.png','Assets/Diamond.png'})
+  img = loadImage(random{'Assets/Diamond.png'})
   -- Draw Image
   image(img,0, 0, 800, 550)
   
   -- Saves sketches
-  save('myStereogram_##.png')
+  save('zineStereogram3.png')
 end
