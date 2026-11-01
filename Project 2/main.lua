@@ -9,14 +9,6 @@ function setup()
 end
 
 -- Define all my potential colors and opacities
-  
-
-
-  -- Define Risograph Blue
-  risoBlueR = 0
-  risoBlueG = 120
-  risoBlueB = 191
-
   -- Define Fluorescent Pink
   risoPinkR = 255
   risoPinkG = 72
@@ -39,19 +31,6 @@ end
 
   -- Shape array for the generative grid
   ShapeOptions = {'drawSquiggle','drawRhombus','drawSquare','drawCircle','drawHeart','drawClover','drawTriangle'}
-
-
--- Defines movable and scalable Squiggle shape
-function drawSquiggle(xLoc,yLoc,scaleShape)
-  push()
-  translate(xLoc,yLoc)
-  scale(scaleShape)
-  noFill()
-  bezier(10,10,50,25,-25,12.5,25,35)
-  circle(10,10,1)
-  circle(25,35,1)
-  pop()
-end
 
 -- Defines movable and scalable Diamond shape
 function drawRhombus(xLoc,yLoc,scaleShape)
@@ -146,9 +125,7 @@ function mousePressed()
     for y = 0, randomYGrid do
 
       
-      if shape == 'drawSquiggle' then
-        drawSquiggle(xLoc,yLoc,scaleShape)
-      elseif shape == 'drawCircle' then
+      if shape == 'drawCircle' then
         noStroke()
         drawCircle(xLoc,yLoc,scaleShape)
       elseif shape == 'drawHeart' then
