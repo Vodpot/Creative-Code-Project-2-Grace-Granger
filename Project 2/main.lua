@@ -156,5 +156,5 @@ function mousePressed()
   image(img,0, 0, 800, 550)
   
   -- Saves sketches
-  save('myStereogram.png')
+  save('myStereogram_##.png')
 end
