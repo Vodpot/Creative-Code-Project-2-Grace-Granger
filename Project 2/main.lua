@@ -154,4 +154,7 @@ function mousePressed()
   img = loadImage(random{'Assets/Star.png','Assets/Smile.png','Assets/Heart.png','Assets/Clover.png','Assets/Diamond.png'})
   -- Draw Image
   image(img,0, 0, 800, 550)
+  
+  -- Saves sketches
+  save('myStereogram.png')
 end
