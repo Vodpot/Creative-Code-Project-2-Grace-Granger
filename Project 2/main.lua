@@ -124,7 +124,6 @@ function mousePressed()
   for x = 0, randomXGrid do
     for y = 0, randomYGrid do
 
-      
       if shape == 'drawCircle' then
         noStroke()
         drawCircle(xLoc,yLoc,scaleShape)
@@ -151,10 +150,11 @@ function mousePressed()
     xLoc = xLoc + 800/randomXGrid
     end
   end
-  img = loadImage(random{'Assets/Diamond.png'})
+  -- Array of drawings made for the Stereogram effect
+  img = loadImage(random{'Assets/Star.png','Assets/Smile.png','Assets/Heart.png','Assets/Clover.png','Assets/Diamond.png'})
   -- Draw Image
   image(img,0, 0, 800, 550)
   
-  -- Saves sketches
-  save('zineStereogram3.png')
+  -- Saves Skecthes when Active
+  -- save('zineStereogram4.png')
 end
