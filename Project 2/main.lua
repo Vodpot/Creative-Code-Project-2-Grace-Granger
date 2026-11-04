@@ -111,7 +111,7 @@ function mousePressed()
       xLoc = 0
       yLoc = 0
       
-      -- Chooses the grid of shape's color
+      -- Chooses the grid of shape's color and opacity
       shapeColor = random(colorChoice)
       shapeOpacity = random(alphaChoice)
         if shapeColor == 'Pink' then
@@ -156,5 +156,5 @@ function mousePressed()
   image(img,0, 0, 800, 550)
   
   -- Saves Skecthes when Active
-  -- save('zineStereogram4.png')
+   --save('prettyPattern.png')
 end
